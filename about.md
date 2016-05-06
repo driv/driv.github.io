@@ -4,12 +4,14 @@ title: About
 permalink: /about/
 ---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+You can find more information about myself on any of these platforms.
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jglovier" %} /
-[jekyll-new](https://github.com/jglovier/jekyll-new)
+<div class="github-card" data-github="driv" data-width="400" data-height="" data-theme="default"></div>
+<script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
 
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+<a href="http://stackoverflow.com/users/469679/federico-nafria">
+<img src="http://stackoverflow.com/users/flair/469679.png" width="208" height="58" alt="profile for Federico Nafria at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Federico Nafria at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
+</a>
+
+<script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+<script type="IN/MemberProfile" data-id="https://www.linkedin.com/in/federiconafria" data-format="inline" data-related="false"></script>

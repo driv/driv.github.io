@@ -1,1 +1,1 @@
-# driv
+You can find this blog on amazinglyabstract.com, see you there!
