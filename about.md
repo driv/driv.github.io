@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-You can find more information about myself on any of these platforms.
+You can find more information about me on any of these platforms.
 
 <div class="github-card" data-github="driv" data-width="400" data-height="" data-theme="default"></div>
 <script src="//cdn.jsdelivr.net/github-cards/latest/widget.js"></script>
