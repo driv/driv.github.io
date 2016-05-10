@@ -1,0 +1,114 @@
+/* The main content */
+$sidebar-width:   300px;
+
+.page-content {
+  margin: 0 0 40px 210px;
+  margin-left: $sidebar-width;
+}
+
+
+/* The left sidebar */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $sidebar-width;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  color: white;
+  background-size: cover;
+  background-position: top center;
+  color: #fff;
+  text-align: center;
+  background-image: 
+  linear-gradient(to bottom, rgba(0,0,0,0.4) 0%,rgba(0,0,0,0.4) 100%), url(/public/background.jpg);
+}
+
+.sidebar-container {
+    padding: 20vh 1rem;
+  }
+
+.sidebar a{
+  color: #fff;
+}
+
+.sidebar h1{
+  color: #fff;
+  margin-top: 0;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+
+/* Making the sidebar responsive */
+
+@include media-query($on-tablet) {
+  
+  .main-content{
+    max-width: none;
+    padding: 40px 20px;
+    margin: 0 0 40px;
+  }
+
+  .sidebar {
+    width: auto;
+    height: 25vh;
+    position: inherit;
+  }
+
+  .sidebar-container {
+    padding: 20vh 1rem;
+    padding: 20px 0 0;
+  }
+
+  .page-content {
+    margin-left: $spacing-unit;
+  }
+}
+
+/* Mobile phone layout */
+
+@include media-query($on-phone) {
+  .sidebar {
+    height: 50vh;
+  }
+
+  .main-content{
+    max-width: none;
+    padding: 40px 20px;
+    margin: 0 0 40px;
+    width: 100%;
+  }
+
+  .sidebar .sidebar-links {
+    text-align: center;
+    margin: 20px auto 0;
+  }
+
+  .sidebar .sidebar-links a {
+    display: block;
+    max-width: 240px;
+    width: auto;
+    vertical-align: middle;
+    text-align: left;
+    margin: 0 auto 5px;
+    padding: 10px 25px;
+    border-top: none;
+    border-left-width: 2px;
+    border-left-style: solid;
+  }
+
+  .sidebar .sidebar-links a i.fa {
+    display: inline-block;
+    font-size: 20px;
+    width: 20px;
+    margin: 0 20px 0 0;
+    vertical-align: middle;
+  }
+
+  .page-content {
+    margin-left: 0;
+  }
+
+}

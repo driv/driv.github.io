@@ -1,0 +1,32 @@
+{% assign image = page.image %}
+
+{% unless image %}
+{% if page.tag %}
+{% assign tag = site.data.tags[page.tag] %}
+{% assign image = tag.image %}
+{% else %}
+{% if page.tags.size > 0 %}
+{% assign tag_name = page.tags[0] %}
+{% assign tag = site.data.tags[tag_name] %}
+{% assign image = tag.image %}
+{% endif %}
+{% endif %}
+{% endunless %}
+
+{% unless image %}
+{% assign image = site.image %}
+{% endunless %}
+
+<aside class="sidebar">
+
+	<div class="sidebar-container">
+		<h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>
+		<div class="site-description">
+			<span>{{site.description}}</span>
+		</div>
+	</div>
+</div>
+
+
+
+</aside>

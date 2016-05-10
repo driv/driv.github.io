@@ -42,7 +42,7 @@
         }
     }
 
-    @include media-query($on-palm) {
+    @include media-query($on-tablet) {
         position: absolute;
         top: 9px;
         right: $spacing-unit / 2;
@@ -154,7 +154,7 @@
     }
 }
 
-@include media-query($on-palm) {
+@include media-query($on-tablet) {
     .footer-col {
         float: none;
         width: -webkit-calc(100% - (#{$spacing-unit} / 2));
@@ -172,7 +172,7 @@
 }
 
 .page-heading {
-    font-size: 20px;
+    font-size: 40px;
 }
 
 .post-list {
@@ -201,15 +201,17 @@
  */
 .post-header {
     margin-bottom: $spacing-unit;
+    @include media-query($on-phone) {
+        height: 40vh;
+    }
 }
 
 .post-title {
-    font-size: 42px;
-    letter-spacing: -1px;
-    line-height: 1;
+    font-size: 70px;
+    line-height: 1.1;
 
     @include media-query($on-laptop) {
-        font-size: 36px;
+        font-size: 55px;
     }
 }
 
@@ -246,5 +248,9 @@
         @include media-query($on-laptop) {
             font-size: 18px;
         }
+    }
+
+    a {
+        color: #828282;
     }
 }

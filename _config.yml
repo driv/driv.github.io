@@ -9,7 +9,7 @@
 title: Amazingly Abstract
 email: federiconafria@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-  Software development and not much more, really.
+  A software development blog by&nbsp;Federico&nbsp;Nafria.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://amazinglyabstract.com" # the base hostname & protocol for your site
 github_username:  driv
@@ -18,3 +18,4 @@ linkedin_username:  federiconafria
 
 # Build settings
 markdown: kramdown
+
