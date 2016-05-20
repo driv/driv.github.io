@@ -3,7 +3,7 @@ layout: post
 title: "Docker swarm cluster on a laptop"
 categories: provisioning
 tags: Vagrant Ansible Docker "Docker swarm"
-description: We are going to follow this [docker swarm tutorial](https://docs.docker.com/swarm/install-manual/), make it work on Virtualbox with Vagrant instead of AWS and script the configuration using Ansible.
+description: We are going to create a Docker Swarm cluster on Virtualbox with Vagrant and script the configuration using Ansible.
 date: 2016-05-20 11:20:00+0200
 ---
 We are going to follow this [docker swarm tutorial](https://docs.docker.com/swarm/install-manual/), make it work on Virtualbox with Vagrant instead of AWS and script the configuration using Ansible.
