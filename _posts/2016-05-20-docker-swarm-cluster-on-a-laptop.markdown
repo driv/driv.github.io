@@ -8,6 +8,8 @@ date: 2016-05-20 11:20:00+0200
 ---
 We are going to follow this [docker swarm tutorial](https://docs.docker.com/swarm/install-manual/), make it work on Virtualbox with Vagrant instead of AWS and script the configuration using Ansible.
 
+You can find the final result on [this repository](https://github.com/driv/blog_docker-swarm-cluster-on-a-laptop).
+
 Let's get started.
 
 # Tools
