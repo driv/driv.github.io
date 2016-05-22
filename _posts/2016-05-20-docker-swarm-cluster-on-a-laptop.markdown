@@ -14,7 +14,7 @@ Let's get started.
 
 # Tools
 
-I'm on a Ubuntu computer, so I this guide is going to be based on that.
+I'm on a Ubuntu computer, so this guide is going to be based on that.
 
 ## Virtualbox
 
@@ -221,26 +221,26 @@ If you have done your [homework](#redis-320), you should have Redis already inst
 
 Now we could complete the provisioning (`vagrant reload --provision`). Or even if we wanted, reload everything from scratch with `vagrant destroy; vagrant up`.
 
-#Considerations
+# Considerations
 
 The playbook works but there are a few things that can be much improved and are not going to be covered in this post.
 
-##Playbook structure.
+## Playbook structure.
 
 Everything was put together in the same playbook and roles are not being used.
 
 By using roles we could define a role for each group (manager, consul and node) and each of them could have the role docker.
 
-##Idempotence
+## Idempotence
 
 If you execute the provision more than once, you'll see that is going to fail because is going to try to run the containers again even if they are already running or if it succeeds, we'll see more than 1 container running on the instance.
 
 There already is a [docker module](http://docs.ansible.com/ansible/docker_module.html) in Ansible, that can be used instead of `shell` as we used in our playbook and is going to make sure that the container is not already created and start it if it's stopped. The problem with this task is that it does not currently support passing parameter to the container execution.
 
-##Variables
+## Variables
 
 To register the manager and nodes in consul, we are retrieving the IP by scavenging its value from the facts of the `consul0` instance, it would be nicer to have a DNS in place and reference a host instead.
 
-#Conclusion
+# Conclusion
 
 Thanks to Vagrant and Ansible we are capable of reproducing and validating the orchestration of our environment on our development machine allowing faster iterations.
