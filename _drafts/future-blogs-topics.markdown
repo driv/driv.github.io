@@ -22,3 +22,4 @@ tags:
 1. Ansible
 1. Vagrant
 1. Ansible + Vagrant + Swarm (Build a swarm cluster on your laptop)
+1. Build docker image from scratch
