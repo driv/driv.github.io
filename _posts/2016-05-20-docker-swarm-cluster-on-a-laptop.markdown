@@ -124,7 +124,7 @@ Vagrant is going to look for `playbook.yml` in the same directory where the `Vag
 
 Now we are ready to let Ansible provision our instances. For that, `vagrant reload --provision`.
 
-##Time to start the containers
+## Time to start the containers
 
 Ansible allows us group instances to select on which instances a task should be executed. We can define the groups in the Vagrantfile and pass them to Ansible. This will be the last change we make to the Vagrantfile.
 
@@ -166,7 +166,7 @@ end
 
 As you can see we have defined 3 groups and we are passing them to Ansible. Now we are going to put these groups to use.
 
-###Start the consul container.
+### Start the consul container.
 
 {% highlight yml %}
 {% raw %}
@@ -179,7 +179,7 @@ As you can see we have defined 3 groups and we are passing them to Ansible. Now 
 {% endraw %}
 {% endhighlight %}
 
-###Start the swarm managers.
+### Start the swarm managers.
 
 {% highlight yml %}
 {% raw %}
@@ -192,7 +192,7 @@ As you can see we have defined 3 groups and we are passing them to Ansible. Now 
 {% endraw %}
 {% endhighlight %}
 
-###Start the nodes.
+### Start the nodes.
 
 {% highlight yml %}
 {% raw %}
@@ -205,7 +205,7 @@ As you can see we have defined 3 groups and we are passing them to Ansible. Now 
 {% endraw %}
 {% endhighlight %}
 
-##Redis
+## Redis
 If you execute the provision right now is not going to work. You can find a perfect explanation in [this blog post](http://blog.wjlr.org.uk/2014/12/30/multi-machine-vagrant-ansible-gotcha.html).
 
 We need 1 config file to tell Ansible to store the instances facts on Redis.
