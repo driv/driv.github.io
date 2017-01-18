@@ -21,5 +21,8 @@ tags:
 1. Unikernels
 1. Ansible
 1. Vagrant
-1. Ansible + Vagrant + Swarm (Build a swarm cluster on your laptop)
 1. Build docker image from scratch
+1. Julia with tensorflow wrapper
+18. Devops for tensorflow
+18. Take down AWS ML cost, spot on instances.
+18. ML seamless switch from laptop to AWS, on the go ML environment.
