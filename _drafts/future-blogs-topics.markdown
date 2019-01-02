@@ -7,6 +7,8 @@ tags:
 
 # Future blogs topics #
 
+1. Value stream mapping
+1. Software from cost center to value generator
 1. Automate Jenkins deploy
 1. Managing Jenkins security
 1. Where to build docker images
