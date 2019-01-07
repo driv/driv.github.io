@@ -3,7 +3,7 @@ layout:	post
 title:	"DevOps - The value in Value Stream Mapping"
 categories:	DevOps
 tags:	DevOps Lean Process
-date:	07/01/2019 00:00:00 +0100
+date:	07/01/2019 00:00:00+0100
 ---
 
 DevOps is everywhere, everyone is claiming that it makes you go faster so and you decided that you are ready for it. What's the next step?
