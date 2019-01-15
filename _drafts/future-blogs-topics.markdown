@@ -8,6 +8,11 @@ tags:
 # Future blogs topics #
 
 1. Value stream mapping
+1. If we want low risk, complexity is not helping
+	2. Companies go for low risk solutions, software complexity is not that.
+	2. Keep it complex, keep it risky
+	2. Risk is in complexity, then why?
+	2. If you don't like risk, you shouldn't like complexity.
 1. Software from cost center to value generator
 1. Automate Jenkins deploy
 1. Managing Jenkins security
