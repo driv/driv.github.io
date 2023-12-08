@@ -8,6 +8,14 @@ tags:
 # Future blogs topics #
 
 1. ~~Value stream mapping~~
+1. Ingress with wildcard DNS services
+	2. https://moss.sh/free-wildcard-dns-services/
+1. Effective comunication is about context and direction.
+1. We can be inefficient with strong winds.
+1. Wardley doctrines
+1. What is Configuration
+	2. What is Configuration really?
+	2. How to manage Configuration.
 1. If we want low risk, complexity is not helping
 	2. Companies go for low risk solutions, software complexity is not that.
 	2. Keep it complex, keep it risky
