@@ -10,6 +10,8 @@ In this post we're going to be looking into how to put together a CI/CD pipeline
 
 Let's put together a CB/CD pipeline with kpack and fluxcd.
 
+The final solution is available [here](https://github.com/driv/flux-image-updates).
+
 # The Tools
 We are going to use:
 - fluxcd
@@ -38,7 +40,7 @@ Buildpack uses a builder. The builder defines a Stack and Buildpacks.
 
 A Stack is comprised of 2 images: a **build image** and a **run image**.
 
-The build get executed on the **build image** and multiple buildpacks get used depending on what is being built.
+The build gets executed on the **build image** and multiple buildpacks participate depending on what is being built.
 
 A buildpack can handle part of a build and/or include other buildpacks recursively. During the build each buildpack detects wether its needed in the build process. Each buildpack manages detection, cache and execution.
 
@@ -81,7 +83,7 @@ Same as in Buildpack it defines the build and run images to be used.
 It ties ClusterStore and ClusterStack together.
 
 #### Image
-It can monitor a git repository and trigger a build on changes. It also allows to trigger rebases when the Builder changes.
+It can monitor a git repository and trigger a build on changes. It will also trigger image rebases when the Builder changes.
 
 
 You can see an example implementation in [this file](https://github.com/driv/flux-image-updates/blob/main/clusters/my-cluster/kpack/builder.yaml).
