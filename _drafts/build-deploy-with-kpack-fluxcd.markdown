@@ -26,11 +26,11 @@ We are going to need locally:
 - git
 
 ### Cloud Native Buildpacks
-Buildpack or Cloud Native Buildpack (CNB) is a CNCF project that allows us to generate container images from source code **without** Dockerfiles.
+Buildpack or Cloud Native Buildpack (CNB) is a CNCF project that allows us to generate Open Container Images (OCI) from source code **without** Dockerfiles.
 
 ***Why? What's wrong with Dockerfiles?***
 
-Dockerfiles are very flexible, but most application builds do not need this flexibility. They would probably benefit from a pre-defined build mechanism that just works.
+Dockerfiles are very flexible, but most application builds don't need this flexibility. They would probably benefit from a pre-defined build mechanism that just works.
 
 It's hard to standardise images if every application defines their Dockerfile and it's even harder to maintain them when you need to change every Dockerfile to update packages and base images.
 
@@ -38,18 +38,18 @@ It's hard to standardise images if every application defines their Dockerfile an
 
 Buildpack uses a builder. The builder defines a Stack and Buildpacks. 
 
-A Stack is comprised of 2 images: a build image and a run image.
+A Stack is comprised of 2 images: a **build image** and a **run image**.
 
 The build get executed on the **build image** and multiple buildpacks get used depending on what is being built.
 
-A buildpack can handle part of a build and/or include other buildpacks recursively, during the build each buildpack detects wether its needed in the build process. Each buildpack manages detection, cache and execution.
+A buildpack can handle part of a build and/or include other buildpacks recursively. During the build each buildpack detects wether its needed in the build process. Each buildpack manages detection, cache and execution.
 
 ![Buildpacks build of a A Spring Boot appplication using gradle](/public/posts_assets/build-deploy-with-kpack-fluxcd/buildpack-java-build.svg)
-<small>*Build of a Spring Boot appplication with Gradle*</small>
+<small>*Build of a Spring Boot application with Gradle*</small>
 
-Once the build is done the **run image** is used as a base and each buildpack used provides a layer with the generated artifacts.
+Once the build is done the **run image** is used as a base and each buildpack that participated in the build provides a layer with the generated artifacts. The generated layers get cached and each buildpack is responsible to determine when their layer can be re-used.
 
-If you have `pack` installed locally you can see it in action by building the apps in the [example repo](https://github.com/driv/flux-image-updates). You don't need java nor golang installed, just `pack` and `docker`
+If you have `pack` installed locally you can see it in action by building the apps in the [example repo](https://github.com/driv/flux-image-updates). You don't need java nor golang installed, just `pack` and `docker`.
 
 {% highlight bash %}
 # From the golang-apiserver directory
@@ -66,7 +66,7 @@ docker run -p 8080:8080 my-java-image
 docker run -p 4444:4444 my-golang-image
 {% endhighlight %}
 
-One important feature is that it allows rebasing images. This means that it can swap the run image without rebuilding the source code. Perfect for fixing vulnerabilities.
+One important feature is rebasing images. This means that it can swap the run image without rebuilding the source code. Perfect for fixing vulnerabilities.
 
 
 #### Kpack implements Buildpacks
