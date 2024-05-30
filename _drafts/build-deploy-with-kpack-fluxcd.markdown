@@ -2,10 +2,10 @@
 layout: post
 title: "Tiny self-contained Continuous Build and Deployment"
 categories: Blog
-tags: buildpacks kpack fluxcd kubernetes
+tags: buildpack kpack fluxcd kubernetes cnb
 ---
 
-In this post we're going to be looking into how to put together a CI/CD pipeline with...
+In this post, we're going to be looking into how to put together a CI/CD pipeline with...
 *Hold on, not CI/CD. There is no Integration, just Build. The D in CD is for Deployment, not Delivery.*
 
 Let's put together a CB/CD pipeline with kpack and fluxcd.
@@ -14,8 +14,8 @@ The final solution is available [here](https://github.com/driv/flux-image-update
 
 # The Tools
 We are going to use:
-- fluxcd
-- kpack
+- FluxCD
+- KPack
 - A GitHub account
 - A DockerHub account
 
@@ -32,9 +32,9 @@ Buildpack or Cloud Native Buildpack (CNB) is a CNCF project that allows us to ge
 
 Dockerfiles are very flexible, but most application builds don't need this flexibility. They would probably benefit from a pre-defined build mechanism that just works.
 
-It's hard to standardise images if every application defines their Dockerfile and it's even harder to maintain them when you need to change every Dockerfile to update packages and base images.
+It's hard to standardise images if every application defines its Dockerfile and it's even harder to maintain them when you need to change every Dockerfile to update packages and base images.
 
-***How does buildpack do this?***
+***How does Buildpack do this?***
 
 Buildpack uses a builder. The builder defines a Stack and Buildpacks. 
 
@@ -42,14 +42,14 @@ A Stack is comprised of 2 images: a **build image** and a **run image**.
 
 The build gets executed on the **build image** and multiple buildpacks participate depending on what is being built.
 
-A buildpack can handle part of a build and/or include other buildpacks recursively. During the build each buildpack detects wether its needed in the build process. Each buildpack manages detection, cache and execution.
+A Buildpack can handle part of a build and/or include other Buildpacks recursively. During the build, each Buildpack detects whether it is needed in the build process. Each Buildpack manages detection, cache and execution.
 
 ![Buildpacks build of a A Spring Boot appplication using gradle](/public/posts_assets/build-deploy-with-kpack-fluxcd/buildpack-java-build.svg)
 <small>*Build of a Spring Boot application with Gradle*</small>
 
-Once the build is done the **run image** is used as a base and each buildpack that participated in the build provides a layer with the generated artifacts. The generated layers get cached and each buildpack is responsible to determine when their layer can be re-used.
+Once the build is done the **run image** is used as a base and each Buildpack that participated in the build provides a layer with the generated artifacts. The included layers get cached and each Buildpack is responsible for determining when their layer can be re-used.
 
-If you have `pack` installed locally you can see it in action by building the apps in the [example repo](https://github.com/driv/flux-image-updates). You don't need java nor golang installed, just `pack` and `docker`.
+If you have `pack` installed locally you can see it in action by building the apps in the [example repo](https://github.com/driv/flux-image-updates). You don't need Java or Go installed, just `pack` and `docker`.
 
 {% highlight bash %}
 # From the golang-apiserver directory
@@ -74,7 +74,7 @@ One important feature is rebasing images. This means that it can swap the run im
 Kpack is Buildpacks for Kubernetes. It will allow us to define Stores, Stacks, Builders and Images as Kubernetes resources.
 
 #### ClusterStore
-It defines which buildpacks are available. E.g. we can limit it to Java and Go and use specific Buildpack image versions
+It defines which Buildpacks are available. E.g. we can limit it to Java and Go and use specific Buildpack image versions
 
 #### ClusterStack
 Same as in Buildpack it defines the build and run images to be used.
@@ -83,7 +83,7 @@ Same as in Buildpack it defines the build and run images to be used.
 It ties ClusterStore and ClusterStack together.
 
 #### Image
-It can monitor a git repository and trigger a build on changes. It will also trigger image rebases when the Builder changes.
+It uses a Builder and it can monitor a git repository to trigger builds on changes. It will also trigger image rebases when the Builder changes.
 
 
 You can see an example implementation in [this file](https://github.com/driv/flux-image-updates/blob/main/clusters/my-cluster/kpack/builder.yaml).
@@ -91,7 +91,7 @@ You can see an example implementation in [this file](https://github.com/driv/flu
 ## FluxCD implements GitOps
 We can use FluxCD to bootstrap and configure our Cluster but not only that.
 
-One interesting FluxCD feature is it's capacity to automatically update images in manifests. This is normally used to update the application Deployments but its flexibility enables updating images used in any kind of resource, like kpack `ClusterStack`.
+One interesting FluxCD feature is its capacity to automatically update images in manifests. This is normally used to update the application Deployments but its flexibility enables updating images used in any kind of resource, like kpack `ClusterStack`.
 
 ImagePolicy for a Deployment
 
@@ -122,7 +122,7 @@ spec:
 
 {% endhighlight %}
 
-The implementation of an image policy is a bit tedious, each image needs it's own `ImageRepository` and `ImagePolicy` defined. [These](https://github.com/driv/flux-image-updates/blob/main/clusters/my-cluster/kpack/builder.yaml#L47) are the resources for the `ClusterStack` image policies.
+The implementation of an image policy is a bit tedious, each image needs its own `ImageRepository` and `ImagePolicy` defined. [These](https://github.com/driv/flux-image-updates/blob/main/clusters/my-cluster/kpack/builder.yaml#L47) are the resources for the `ClusterStack` image policies.
 
 # Try it yourself
 
