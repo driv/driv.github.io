@@ -3,13 +3,14 @@ layout: post
 title: "Tiny Self-Contained Continuous Build and Deployment"
 categories: Blog
 tags: buildpack kpack fluxcd kubernetes cnb
+published: true
+date:	30/05/2024 08:00:00+0000
 ---
 
 In this post, we're going to be looking into how to put together a CI/CD pipeline with...
 *Hold on, not CI/CD. There is no Integration, just Build. The D in CD is for Deployment, not Delivery.*
 
-Let's put together a CB/CD pipeline with kpack and fluxcd.
-
+Let's put together a CB/CD solution with kpack and fluxcd.
 The final solution is available [here](https://github.com/driv/flux-image-updates).
 
 # The Tools
