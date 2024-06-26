@@ -8,6 +8,7 @@ tags:
 # Future blogs topics #
 
 1. ~~Value stream mapping~~
+2. Indestructible applications with progressive delivery.
 1. What is Configuration.
 	2. What is Configuration really?
 	2. How to manage Configuration.
