@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Tiny Self-Contained Continuous Build and Deployment"
+title: "Tiny Self-Contained Continuous Build and Deployment on Kubernetes"
 categories: Blog
 tags: buildpack kpack fluxcd kubernetes cnb
 published: true
