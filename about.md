@@ -3,9 +3,6 @@ layout: page
 title: About Me
 permalink: /about/
 ---
-
-# About Me
-
 Hello! I'm Federico Nafria, a seasoned Software Engineer with extensive experience in Infrastructure, Configuration Management, and Programming. I have a strong background in designing, building, and maintaining scalable infrastructure and microservice solutions.
 
 ## Blog Topics
