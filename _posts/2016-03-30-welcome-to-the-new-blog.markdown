@@ -3,7 +3,6 @@ layout: post
 title:	"Welcome to the new blog"
 date:		2016-03-30 01:01:01 +0200
 categories: general
-tags: blog
 ---
 This blog post is just to test the static blog generation in Github Pages.
 

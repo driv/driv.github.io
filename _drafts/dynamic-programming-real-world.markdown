@@ -2,7 +2,7 @@
 layout: post
 title: "Dynamic programming - A real world application"
 categories: Programming
-tags: Algorithms Pattherns Performance
+tags: Algorithms Patterns Performance
 ---
 I've know and understood this algorithmic pattern for a few years already.
 As with many of these beautiful and efficient solution, it's not always easy to find them in the wild.

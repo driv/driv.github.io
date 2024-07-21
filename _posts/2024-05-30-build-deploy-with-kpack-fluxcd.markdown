@@ -2,7 +2,7 @@
 layout: post
 title: "Continuous Build and Deployment on Kubernetes"
 categories: Blog
-tags: buildpack kpack fluxcd kubernetes cnb
+tags: Buildpack Kpack FluxCD Kubernetes CNB
 published: true
 date:	30/05/2024 08:00:00+0000
 ---

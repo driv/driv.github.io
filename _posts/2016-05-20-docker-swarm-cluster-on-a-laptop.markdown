@@ -2,7 +2,7 @@
 layout: post
 title: "Docker swarm cluster on a laptop"
 categories: provisioning
-tags: Vagrant Ansible Docker "Docker swarm"
+tags: Vagrant Ansible Docker Docker-Swarm
 description: We are going to create a Docker Swarm cluster on Virtualbox with Vagrant and script the configuration using Ansible.
 date: 2016-05-20 11:20:00+0200
 ---

@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Jenkins 2 Pipeline as Code test drive"
+title: "Jenkins Pipeline as Code test drive"
 categories: devops
-tags: Jenkins "Pipeline as Code" Gradle
+tags: Jenkins Pipeline-as-Code Gradle
 date: 2016-05-05 16:20:00+0200
 ---
 After having read that Jenkins 2 was out, I decided to give it a go and see what has changed and see what can we do with [Pipeline as Code](https://wiki.jenkins-ci.org/display/JENKINS/2.0+Pipeline+as+Code).
