@@ -3,6 +3,8 @@ layout: post
 title: "Indestructible applications with progressive delivery"
 categories: Blog
 tags: Flagger Fluxcd Kubernetes
+published: true
+date:	12/08/2024 00:00:00+0000
 ---
 Progressive delivery allows us to put a new application version in production while keeping the previous one running and controlling how much traffic each gets.
 
