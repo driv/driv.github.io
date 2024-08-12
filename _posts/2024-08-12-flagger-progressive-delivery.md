@@ -34,7 +34,7 @@ Part of the FluxCD ecosystem, Flagger can do progressive delivery for us. It sup
 
 ## Canary
 
-The new version of the application that slowly starts getting traffic is called canary (from the canaries used as [sentinels](https://en.wikipedia.org/wiki/Sentinel_species) in coal mines). 
+The new version of the application that slowly starts getting traffic is called canary (from the canaries used as [sentinels](https://en.wikipedia.org/wiki/Sentinel_species) in coal mines).
 
 ```
 apiVersion: flagger.app/v1beta1
@@ -90,7 +90,7 @@ While the canary instances are still running, the primary `Deployment` gets upda
 - Flagger increases the traffic to the canary service and keeps running the analysis.
 - Flagger copies the canary configuration to the primary.
   - `name: app-primary`
-  - `image: image:v1->image:v2` 
+  - `image: image:v1->image:v2`
 - Flagger scales down the canary deployment.
   - `name: app`
   - `replicas: 1->0`
@@ -133,7 +133,7 @@ If the analysis keeps failing the release is aborted. Since the primary deployme
 
 We can define our metrics with a `MetricTemplate` and reference them from our canary.
 
-For example: the default `request-success-rate` considers success as anything that is not a 500 error, but we might want to consider 2xx and 3xx responses only.
+For example: the default `request-success-rate` considers success as anything that is not a 500 error, but we might want to consider 2xx and 3xx responses only. In this scenario, we are using Prometheus metrics.
 
 ```
 apiVersion: flagger.app/v1beta1
@@ -155,8 +155,8 @@ spec:
           status~="[23].*"
         }[{{ interval }}]
       )
-    ) 
-    / 
+    )
+    /
     sum(
       rate(
         nginx_ingress_controller_requests{
@@ -165,7 +165,7 @@ spec:
           canary!=""
         }[{{ interval }}]
       )
-    ) 
+    )
     * 100
 ```
 
@@ -191,7 +191,7 @@ spec:
 
 # Try it out!
 
-Check out this repo.
-Try using a slow or broken application version and see how Flagger will stop you from completely breaking "production".
-
+Check out [this repo](https://github.com/driv/flagger-progressive-delivery).
 You'll find all the instructions in the Readme.
+
+Try using a slow or broken application version and see how Flagger will stop you from completely breaking "production".
