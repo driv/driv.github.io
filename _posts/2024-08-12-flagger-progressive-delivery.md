@@ -189,9 +189,9 @@ spec:
 ```
 
 
-# Try it out!
+# Ready to Experiment?
 
-Check out [this repo](https://github.com/driv/flagger-progressive-delivery).
+Head over to [this repo](https://github.com/driv/flagger-progressive-delivery) and try Flagger in a local cluster.
 You'll find all the instructions in the Readme.
 
-Try using a slow or broken application version and see how Flagger will stop you from completely breaking "production".
+Try using a slow or faulty application version and watch how Flagger will stop you from completely breaking "production".
