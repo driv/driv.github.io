@@ -1,4 +1,4 @@
-You can find this blog on [amazinglyabstract.net](http://amazinglyabstract.net), see you there!
+You can find this blog on [amazinglyabstract.it](http://amazinglyabstract.it), see you there!
 
 ### Run locally
 ```
