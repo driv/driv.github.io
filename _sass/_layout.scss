@@ -1,12 +1,10 @@
 /**
  * Site header
  */
-.site-header {
+ .site-header {
     border-top: 5px solid $grey-color-dark;
     border-bottom: 1px solid $grey-color-light;
     min-height: 56px;
-
-    // Positioning context for the mobile navigation icon
     position: relative;
 }
 
@@ -25,7 +23,9 @@
 }
 
 .site-nav {
-    float: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
     line-height: 56px;
 
     .menu-icon {
@@ -36,9 +36,12 @@
         color: $text-color;
         line-height: $base-line-height;
 
-        // Gaps between nav items, but not on the last one
         &:not(:last-child) {
             margin-right: 20px;
+        }
+
+        &:hover {
+            color: $highlight-color;
         }
     }
 
@@ -83,16 +86,121 @@
         .page-link {
             display: block;
             padding: 5px 10px;
+            margin-left: 20px;
 
             &:not(:last-child) {
                 margin-right: 0;
             }
-            margin-left: 20px;
         }
     }
 }
 
+/* Hero Section */
+.hero {
+    background-color: $primary-background-color;
+    padding: 40px;
+    text-align: center;
+  }
 
+  .hero .page-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+
+  .hero .intro {
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+
+  /* Latest Posts Section */
+  .latest-posts {
+    margin-top: 30px;
+  }
+
+  .latest-posts .post-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .latest-posts .post-item {
+    border: 1px solid $grey-color-light;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: $background-color;
+  }
+
+  .latest-posts .post-meta {
+    font-size: 0.9rem;
+    color: $grey-color;
+  }
+
+  .latest-posts .post-link {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: $brand-color;
+    text-decoration: none;
+  }
+
+  .latest-posts .post-link:hover {
+    text-decoration: underline;
+  }
+
+  .latest-posts .post-excerpt {
+    font-size: 1rem;
+    margin-top: 10px;
+  }
+
+  .read-more {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 1rem;
+    color: $brand-color;
+    text-decoration: none;
+  }
+
+  .read-more:hover {
+    text-decoration: underline;
+  }
+
+  /* RSS Subscription */
+  .rss-subscribe {
+    margin-top: 40px;
+    text-align: center;
+  }
+
+  /* Tags Section */
+  .tags {
+    margin-top: 50px;
+  }
+
+  .tags .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .tags .tag {
+    padding: 8px 16px;
+    background-color: $primary-background-color;
+    border-radius: 20px;
+    font-size: 1rem;
+    color: $grey-color;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+
+  .tags .tag:hover {
+    background-color: $brand-color;
+    color: white;
+  }
+
+  @include media-query($on-tablet) {
+    .latest-posts .post-list {
+      grid-template-columns: 1fr;  // Two columns for tablet and larger screens
+    }
+  }
 
 /**
  * Site footer
@@ -100,6 +208,7 @@
 .site-footer {
     border-top: 1px solid $grey-color-light;
     padding: $spacing-unit 0;
+    font-size: 15px;
 }
 
 .footer-heading {
@@ -109,42 +218,30 @@
 
 .share-section {
     text-align: center;
-  }
+}
 
-  .share-buttons {
+.share-buttons {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: center;
-  }
+}
 
-  .share-buttons li {
+.share-buttons li {
     margin: 0 10px;
-  }
+}
 
-  .share-buttons a {
+.share-buttons a {
     color: #000;
     text-decoration: none;
-  }
 
-  .share-buttons a:hover {
-    color: #0073b1; /* LinkedIn color */
-  }
+    &:hover {
+        color: $highlight-color;
+    }
+}
 
-  .share-buttons a:hover .fa-twitter {
-    color: #1da1f2;
-  }
-
-  .share-buttons a:hover .fa-reddit {
-    color: #ff4500;
-  }
-
-  .share-buttons a:hover .fa-linkedin {
-    color: #0073b1;
-  }
-
-  .sr-only {
+.sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -153,54 +250,27 @@
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     border: 0;
-  }
+}
 
 .footer-col-wrapper {
-    font-size: 15px;
     color: $grey-color;
     margin-left: -$spacing-unit / 2;
     @extend %clearfix;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .footer-col {
-    float: left;
     margin-bottom: $spacing-unit / 2;
     padding-left: $spacing-unit / 2;
-}
+    width: calc(33.33% - ($spacing-unit / 2));
 
-.footer-col-1 {
-    width: -webkit-calc(35% - (#{$spacing-unit} / 2));
-    width:         calc(35% - (#{$spacing-unit} / 2));
-}
-
-.footer-col-2 {
-    width: -webkit-calc(20% - (#{$spacing-unit} / 2));
-    width:         calc(20% - (#{$spacing-unit} / 2));
-}
-
-.footer-col-3 {
-    width: -webkit-calc(45% - (#{$spacing-unit} / 2));
-    width:         calc(45% - (#{$spacing-unit} / 2));
-}
-
-@include media-query($on-laptop) {
-    .footer-col-1,
-    .footer-col-2 {
-        width: -webkit-calc(50% - (#{$spacing-unit} / 2));
-        width:         calc(50% - (#{$spacing-unit} / 2));
+    @include media-query($on-laptop) {
+        width: calc(50% - ($spacing-unit / 2));
     }
 
-    .footer-col-3 {
-        width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-        width:         calc(100% - (#{$spacing-unit} / 2));
-    }
-}
-
-@include media-query($on-tablet) {
-    .footer-col {
-        float: none;
-        width: -webkit-calc(100% - (#{$spacing-unit} / 2));
-        width:         calc(100% - (#{$spacing-unit} / 2));
+    @include media-query($on-tablet) {
+        width: 100%;
     }
 }
 
@@ -215,6 +285,7 @@
 
 .page-heading {
     font-size: 40px;
+    margin-bottom: $spacing-unit;
 }
 
 .post-list {
@@ -229,11 +300,17 @@
 .post-meta {
     font-size: $small-font-size;
     color: $grey-color;
+    margin-bottom: $spacing-unit;
 }
 
 .post-link {
     display: block;
     font-size: 24px;
+    color: $text-color;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 
@@ -249,11 +326,11 @@
 }
 
 .post-title {
-    font-size: 70px;
+    font-size: 55px;
     line-height: 1.1;
 
     @include media-query($on-laptop) {
-        font-size: 55px;
+        font-size: 40px;
     }
 }
 
@@ -261,38 +338,70 @@
     margin-bottom: $spacing-unit;
 
     h1 {
-        font-size: 32px;
-
-        @include media-query($on-laptop) {
-            font-size: 28px;
-        }
+      font-size: 42px;  // Larger size to make the title more prominent
+      color: $brand-color;  // Ensure it's clearly visible
+      line-height: 1.4;  // More breathing room for readability
+      margin-bottom: 20px;  // Space below to separate from the content
+      text-transform: capitalize;  // Capitalize the first letter for visual emphasis
+      @include media-query($on-laptop) {
+        font-size: 36px;  // Slightly smaller for laptops but still prominent
+      }
+      @include media-query($on-phone) {
+        font-size: 28px;  // Smaller but still easy to read on mobile
+      }
     }
 
     h2 {
-        font-size: 26px;
-
-        @include media-query($on-laptop) {
-            font-size: 22px;
-        }
+      font-size: 30px;  // Larger for subheadings
+      color: $brand-color;
+      line-height: 1.4;
+      margin-bottom: 15px;  // Space below for readability
+      text-transform: capitalize;  // Keeps it consistent with h1
+      @include media-query($on-laptop) {
+        font-size: 28px;
+      }
+      @include media-query($on-phone) {
+        font-size: 24px;  // Make it readable on smaller screens
+      }
     }
 
     h3 {
-        font-size: 20px;
-
-        @include media-query($on-laptop) {
-            font-size: 18px;
-        }
+      font-size: 24px;  // Ensure it's clearly visible
+      color: $brand-color;
+      line-height: 1.4;
+      margin-bottom: 10px;  // Space to prevent cramping
+      text-transform: capitalize;  // Keeps it aligned with h1 and h2
+      @include media-query($on-laptop) {
+        font-size: 22px;
+      }
+      @include media-query($on-phone) {
+        font-size: 20px;  // Adjust for mobile
+      }
     }
 
     h4 {
-        font-size: 20px;
-
-        @include media-query($on-laptop) {
-            font-size: 18px;
-        }
+      font-size: 20px;  // Slightly smaller for lower-level headings
+      font-weight: 600;
+      color: $brand-color;
+      line-height: 1.5;
+      margin-bottom: 10px;  // Consistent spacing
+      text-transform: capitalize;  // Keep consistent with other headings
+      @include media-query($on-phone) {
+        font-size: 20px;  // Adjust for mobile
+      }
     }
 
     a {
-        color: #828282;
+      color: $highlight-color;  // On hover, change to highlight color
+      font-weight: 500;  // Slightly heavier font for links
+      text-decoration: none;  // Remove default underline
+      transition: color 0.3s ease;  // Smooth hover effect
+
+      &:hover {
+        color: $highlight-color;  // On hover, change to highlight color
+        text-decoration: underline;  // Underline on hover for interactivity
+      }
     }
-}
+  }
+
+

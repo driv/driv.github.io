@@ -6,7 +6,7 @@ tags:	DevOps Lean Process
 date:	07/01/2019 00:00:00+0000
 ---
 
-DevOps is everywhere, everyone is claiming that it makes you go faster so and you decided that you are ready for it. What's the next step?
+DevOps is everywhere, everyone is claiming that it makes you go faster and you decided that you are ready for it. What's the next step?
 
 Should you learn about Docker? Kubernetes? Continuous deployment?
 
