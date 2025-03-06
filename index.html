@@ -4,16 +4,18 @@ layout: default
 
 <div class="home">
   <!-- Hero Section -->
-  <section class="hero">
-    <h1 class="page-heading">Welcome to My Blog</h1>
+  <section class="hero transparent-rounded-bg">
+    <h1 class="page-heading">Welcome to Amazingly Abstract</h1>
+    <p class="hero-description">
+      <br />Dive deep into the world of DevOps, Kubernetes, CI/CD, and more.
+    </p>
   </section>
 
   <!-- Latest Posts Section -->
   <section class="latest-posts">
-    <h2 class="section-heading">Latest Posts</h2>
     <ul class="post-list">
       {% for post in site.posts %}
-      <li class="post-item">
+      <li class="post-item transparent-rounded-bg">
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
         <h3><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
         <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
@@ -33,7 +35,7 @@ layout: default
     <h2 class="section-heading">Popular Tags</h2>
     <div class="tag-cloud">
       {% for tag in site.tags %}
-        <a href="/tags/{{ tag[0] | slugify }}" class="tag">{{ tag[0] }}</a>
+      <a href="/tags/{{ tag[0] | slugify }}" class="tag">{{ tag[0] }}</a>
       {% endfor %}
     </div>
   </section>

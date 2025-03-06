@@ -97,7 +97,6 @@
 
 /* Hero Section */
 .hero {
-    background-color: $primary-background-color;
     padding: 40px;
     text-align: center;
 }
@@ -127,7 +126,6 @@
     border: 1px solid $grey-color-light;
     padding: 20px;
     border-radius: 5px;
-    background-color: $background-color;
 }
 
 .latest-posts .post-meta {
@@ -315,13 +313,16 @@
 
 
 
+.transparent-rounded-bg {
+    background: rgba(255, 255, 255, 0.95); // White with slight transparency
+    padding: 30px;
+    border-radius: 8px; // Soft rounded corners for a clean look
+}
+
 /**
  * Posts
  */
 .post {
-    background: rgba(255, 255, 255, 0.95); // White with slight transparency
-    padding: 30px;
-    border-radius: 8px; // Soft rounded corners for a clean look
     max-width: 800px; // Keep the text readable with a limited width
     margin: auto; // Center it on the page
 }
