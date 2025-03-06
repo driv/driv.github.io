@@ -318,8 +318,17 @@
 /**
  * Posts
  */
+.post {
+    background: rgba(255, 255, 255, 0.95); // White with slight transparency
+    padding: 30px;
+    border-radius: 8px; // Soft rounded corners for a clean look
+    max-width: 800px; // Keep the text readable with a limited width
+    margin: auto; // Center it on the page
+}
+
 .post-header {
     margin-bottom: $spacing-unit;
+
     @include media-query($on-phone) {
         height: 40vh;
     }
