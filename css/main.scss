@@ -18,17 +18,17 @@ $base-line-height: 1.5;
 $spacing-unit:     30px;
 
 $text-color:       #111;
-$highlight-color:  #0073b1;
 // _base.scss
 
 /* Color Palette */
 $primary-background-color: #f4f4f4; // Light gray background color for sections like hero
 $background-color: #ffffff;        // White background color for posts and cards
-$brand-color: #82370c;             // Your brand color (blue in this case)
+$brand-color: #8A3B0D;             // Your brand color (blue in this case)
 $grey-color: #7f8c8d;              // Gray color for text, borders, etc.
 $grey-color-light: #ecf0f1;        // Light gray for borders and backgrounds
 $white-color: #ffffff;             // White color
 $black-color: #2c3e50;             // Dark color for text
+$highlight-color:  lighten($brand-color, 5%);
 
 
 $grey-color-dark:  darken($grey-color, 25%);
