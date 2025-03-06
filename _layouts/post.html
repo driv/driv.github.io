@@ -14,33 +14,32 @@ layout: default
 		{{ content }}
 	</div>
 
+	<div class="share-section">
+		<ul class="share-buttons">
+			<li>
+				<h5>Share it:</h5>
+			</li>
+			<li>
+				<a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | prepend: site.url | cgi_escape }}"
+					title="Share on LinkedIn" target="_blank">
+					<i class="fab fa-linkedin fa-2x"></i>
+					<span class="sr-only">LinkedIn</span>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/intent/tweet?url={{ page.url | prepend: site.url | cgi_escape }}&text={{ page.title }}&via=federiconafria"
+					title="Tweet" target="_blank">
+					<i class="fab fa-twitter fa-2x"></i>
+					<span class="sr-only">Twitter</span>
+				</a>
+			</li>
+			<li>
+				<a href="https://www.reddit.com/submit?url={{ page.url | prepend: site.url | cgi_escape }}&title={{ page.title }}"
+					title="Submit to Reddit" target="_blank">
+					<i class="fab fa-reddit fa-2x"></i>
+					<span class="sr-only">Reddit</span>
+				</a>
+			</li>
+		</ul>
+	</div>
 </article>
-
-<div class="share-section">
-	<ul class="share-buttons">
-		<li>
-			<h5>Share it:</h5>
-		</li>
-		<li>
-			<a href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | prepend: site.url | cgi_escape }}"
-				title="Share on LinkedIn" target="_blank">
-				<i class="fab fa-linkedin fa-2x"></i>
-				<span class="sr-only">LinkedIn</span>
-			</a>
-		</li>
-		<li>
-			<a href="https://twitter.com/intent/tweet?url={{ page.url | prepend: site.url | cgi_escape }}&text={{ page.title }}&via=federiconafria"
-				title="Tweet" target="_blank">
-				<i class="fab fa-twitter fa-2x"></i>
-				<span class="sr-only">Twitter</span>
-			</a>
-		</li>
-		<li>
-			<a href="https://www.reddit.com/submit?url={{ page.url | prepend: site.url | cgi_escape }}&title={{ page.title }}"
-				title="Submit to Reddit" target="_blank">
-				<i class="fab fa-reddit fa-2x"></i>
-				<span class="sr-only">Reddit</span>
-			</a>
-		</li>
-	</ul>
-</div>
