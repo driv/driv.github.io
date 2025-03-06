@@ -6,6 +6,10 @@ $sidebar-width: 300px;
   margin-left: $sidebar-width;
 }
 
+body {
+  background: url(/public/background.jpg) no-repeat center center fixed;
+  background-size: cover;
+}
 
 /* The left sidebar */
 
@@ -21,8 +25,6 @@ $sidebar-width: 300px;
   background-position: top center;
   color: #fff;
   text-align: center;
-  background-image:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.4) 100%), url(/public/background.jpg);
 }
 
 .sidebar-container {
