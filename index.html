@@ -16,7 +16,7 @@ layout: default
       <li class="post-item">
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
         <h3><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
-        <p class="post-excerpt">{{ post.excerpt | truncatewords: 30 }}</p>
+        <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
         <a class="read-more" href="{{ post.url | prepend: site.baseurl }}">Read More &rarr;</a>
       </li>
       {% endfor %}
