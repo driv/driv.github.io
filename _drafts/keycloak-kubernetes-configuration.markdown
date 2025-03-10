@@ -5,7 +5,7 @@ categories: Infrastructure Kubernetes
 tags: Keycloak OIDC Kubernetes "Operator" Crossplane
 ---
 <!-- markdownlint-disable MD033 MD025 -->
-Keycloak is many things, but simple and friendly aren't among them. Another major issue is the reliance on the UI in most configurations guides - *Not good, not good*.
+Keycloak is many things, but simple and friendly aren't among them. Another major issue is the reliance on the UI in most configuration guides—*Not good, not good*.
 
 Let's try to bring some clarity by putting things down in a declarative configuration. This is not a Keycloak guide, we'll only touch on some simple concepts.
 
@@ -23,7 +23,7 @@ But, it can provide us an instance to build on.
 
 <iframe id="keycloak-instance-definition" frameborder="0" scrolling="no" style="width:100%; height:730px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2Fdriv%2Fkeycloak-configuration%2Fblob%2Fmain%2Fkeycloak-instance%2Fkeycloak-instance.yaml%23L1-L30&style=a11y-light&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on"></iframe>
 
-Most things are self explanatory.
+Most things are self-explanatory.
 
 `bootstrapAdmin` uses a secret to initialize both a user and a service. We'll use the `user` and Crossplane will use the `service`.
 
@@ -33,7 +33,7 @@ We need to enable `backchannelDynamic` to allow Grafana to talk to Keycloak thro
 
 ***Wait, what!?***
 
-Since the Operator falls short, we need some alternative. Luckily Terraform has what we need and more.
+Since the Operator falls short, we need an alternative. Luckily Terraform has what we need and more.
 
 Don't worry, we are **not** going to be using Terraform directly! We don't want to lose the reconciliation capabilities of Kubernetes. We'll be using it through this great [Crossplane Provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-keycloak/v1.11.0).
 
@@ -43,7 +43,7 @@ Independently of how we are configuring our authentication there are a few thing
 
 ## Realm
 
-This is just the way keycloak groups resources. Each realm has its own clients (applications), users, groups, etc. It's recommended not to use the master realm, but reserve it to create other realms.
+This how Keycloak groups resources. Each realm has its own clients (applications), users, groups, etc. It's recommended not to use the master realm, but reserve it to create other realms.
 
 ## Client
 
@@ -60,7 +60,7 @@ The second step is not always necessary, we could include all the information ne
 
 When defining what user information the client has access to we define scopes. e.g. `name`, `email`, etc.
 
-One scope we are particularly intersted in is `roles` which unluckily is not part of the OIDC definition and not part of the default data returned by Keycloak in the token or in the userinfo endpoint.
+One scope we are particularly interested in is `roles` which unfortunately is not part of the OIDC definition and not part of the default data returned by Keycloak in the token or in the userinfo endpoint.
 
 To fix this, we need to define a mapper.
 
@@ -98,7 +98,7 @@ As we've mentioned before, we have to configure Keycloak to include the roles so
 
 <script src="https://emgithub.com/embed-v2.js?target=https%3A%2F%2Fgithub.com%2Fdriv%2Fkeycloak-configuration%2Fblob%2Fmain%2Fkeycloak-provisioning%2Fkeycloak-client-config.yaml%23L113-L137&style=a11y-light&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on&fetchFromJsDelivr=on"></script>
 
-We need to define for which protocol and which mapper to use:
+We need to specify the type of mapper and the protocol it applies to:
 
 {% highlight yaml %}
 
