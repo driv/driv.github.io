@@ -7,9 +7,13 @@ $sidebar-width: 300px;
 }
 
 body {
-  background: url(/public/background.jpg) no-repeat center center fixed;
+  background: image-set(
+    url('/public/background.webp') type('image/webp'),
+    url('/public/background.jpg') type('image/jpeg')
+  ) no-repeat center center fixed;
   background-size: cover;
 }
+
 
 /* The left sidebar */
 
