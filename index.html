@@ -16,7 +16,7 @@ layout: default
       {% for post in site.posts %}
       <li class="post-item transparent-rounded-bg">
         <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <h3><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
+        <h1><a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></h3>
         <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
         <a class="read-more" href="{{ post.url | prepend: site.baseurl }}">Read More &rarr;</a>
       </li>
