@@ -9,7 +9,7 @@ Keycloak is many things, but simple and friendly aren't among them. Another majo
 
 Let's try to bring some clarity by putting things down in a declarative configuration. This is not a Keycloak guide, we'll only touch on some simple concepts.
 
-We'll be using Grafana as our Guinea pig.
+Grafana is going to be our Guinea pig.
 
 You can find all the code in this repository: [driv/keycloak-configuration](https://github.com/driv/keycloak-configuration)
 
@@ -66,7 +66,7 @@ To fix this, we need to define a mapper.
 
 ### Mapper
 
-This is an important and not really intuitive part of the configuration. We need to tell Keycloak to include the user roles in the userinfo data so Grafan can access it. We could either do this as a global configuration, mapping any role into the token or userinfo, or per client.
+This is an important and not really intuitive part of the configuration. We need to tell Keycloak to include the user roles in the userinfo data so Grafana can access it. We could either do this as a global configuration, mapping any role into the token or userinfo, or per client.
 
 # Crossplane
 
