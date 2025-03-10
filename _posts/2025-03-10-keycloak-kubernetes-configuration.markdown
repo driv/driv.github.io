@@ -3,6 +3,7 @@ layout: post
 title: "Keycloak OIDC - Declarative Configuration on Kubernetes with Crossplane"
 categories: Infrastructure Kubernetes
 tags: Keycloak OIDC Kubernetes "Operator" Crossplane
+date:	10/03/2025 08:00:00+0000
 ---
 <!-- markdownlint-disable MD033 MD025 -->
 Keycloak is many things, but simple and friendly aren't among them. Another major issue is the reliance on the UI in most configuration guides—*Not good, not good*.
@@ -145,7 +146,7 @@ Grafana configuration is almost default apart from auth:
 
 # Conclusion
 
-Despite having to use multiple different tools we were able to achieve a declarative configuration for a Client on Keycloak. I'm surprised that Keycloak does not provide a simpler mechanism, since auth(z|n) seems to me an area that would benefit from a reviewable versionable and continuously reconciled configuration.
+Despite having to use multiple different tools we were able to achieve a declarative configuration for a Client on Keycloak. I'm surprised that Keycloak does not provide a simpler mechanism, since `auth(z|n)` seems to me an area that would benefit from a reviewable versionable and continuously reconciled configuration.
 
 ## Considerations
 
