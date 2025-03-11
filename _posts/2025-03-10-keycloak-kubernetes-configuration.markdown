@@ -52,14 +52,14 @@ In this case Grafana.
 
 With OIDC the client performs 2 tasks:
 
-- Receives a jwt token from Keycloak and validates it.
-- Retrieves the userinfo from Keycloak using the received token.
+- **Receives** a jwt token from Keycloak and validates it.
+- **Retrieves** the userinfo from Keycloak using the received token.
 
 The second step is not always necessary, we could include all the information needed in the token.
 
 ### Scopes
 
-When defining what user information the client has access to we define scopes. e.g. `name`, `email`, etc.
+To determine what user information the client has access to we define scopes. e.g. `name`, `email`, etc.
 
 One scope we are particularly interested in is `roles` which unfortunately is not part of the OIDC definition and not part of the default data returned by Keycloak in the token or the userinfo endpoint.
 
