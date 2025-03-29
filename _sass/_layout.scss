@@ -184,14 +184,14 @@
     background-color: $primary-background-color;
     border-radius: 20px;
     font-size: 1rem;
-    color: $grey-color;
+    color: $brand-color;
     text-decoration: none;
     transition: background-color 0.3s;
 }
 
 .tags .tag:hover {
     background-color: $brand-color;
-    color: white;
+    color: $grey-color-light;
 }
 
 @include media-query($on-tablet) {
