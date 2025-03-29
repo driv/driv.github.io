@@ -18,4 +18,6 @@ linkedin_username:  federiconafria
 
 # Build settings
 markdown: kramdown
+plugins:
+- jekyll-sitemap
 
