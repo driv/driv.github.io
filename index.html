@@ -25,16 +25,15 @@ layout: default
   </section>
 
   <!-- RSS Subscription -->
-  <section class="rss-subscribe">
-    <p>Stay up to date: <a href="{{ '/feed.xml' | prepend: site.baseurl }}">Subscribe via RSS</a></p>
+  <section class="rss-subscribe transparent-rounded-bg">
+    <p class="tag">Stay up to date: <a href="{{ '/feed.xml' | prepend: site.baseurl }}">Subscribe via RSS</a></p>
   </section>
 
   <!-- Tags Section -->
   <section class="tags">
-    <h2 class="section-heading">Popular Tags</h2>
     <div class="tag-cloud">
       {% for tag in site.tags %}
-      <a href="/tags/{{ tag[0] | slugify }}" class="tag">{{ tag[0] }}</a>
+      <p class="tag">{{ tag[0] }}</p>
       {% endfor %}
     </div>
   </section>
