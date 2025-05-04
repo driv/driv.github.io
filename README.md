@@ -1,14 +1,29 @@
+# Amazingly Abstract
+
 You can find this blog on [amazinglyabstract.it](http://amazinglyabstract.it), see you there!
 
-### Run locally
+## Run locally
+
+```bash
+bundle exec jekyll serve
 ```
-bundle3.0 exec jekyll serve
+
+## Install dependencies
+
+```bash
+bundle install
 ```
-### Install dependencies
+
+## Update dependencies
+
+```bash
+bundle update
 ```
-bundle3.0 install
-```
-### Update dependencies
-```
-bundle3.0 update
+
+## Use rbenv
+
+If you are using rbenv, make sure to run the following command to set up your environment correctly:
+
+```bash
+eval "$(rbenv init -)"
 ```
