@@ -3,7 +3,7 @@ layout: post
 title: "Pulumi - Zitadel Configuration on the Operator"
 categories: Infrastructure Kubernetes IaC
 tags:   Pulumi Zitadel OIDC Kubernetes "Operator"
-date:	28/04/2025 08:00:00+0000
+date:	05/05/2025 00:00:00+0000
 ---
 <!-- markdownlint-disable MD033 MD025 -->
 I've been wanting to try Pulumi for a while now. I love IaC but I've always liked strongly typed languages. I think they are a great way to avoid mistakes and incentivize refactoring.
