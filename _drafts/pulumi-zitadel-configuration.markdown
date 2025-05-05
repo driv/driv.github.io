@@ -46,7 +46,9 @@ Configuration is done through a GRPC API using JWT tokens. The [helm chart](http
 
 [Helmfile](https://github.com/helmfile/helmfile?tab=readme-ov-file#installation) is a tool to manage multiple helm releases.
 
-It allows you to define the configuration of your helm releases in a single file, making it easier to manage and deploy multiple applications. Another great functionality is to convert Kustomize manifests to helm charts on the fly, allowing a single command to deploy the whole development environment acting like a Kubernetes Compose.
+It allows you to define the configuration of your helm releases in a single file, making it easier to manage and deploy multiple applications.
+
+Another great functionality is to convert Kustomize manifests to helm charts on the fly, allowing a single command to deploy the whole development environment acting like a Kubernetes-Compose.
 
 I'll use it to deploy all the tools and extra configuration we need running on Kubernetes. In a production scenario, this would be handled by FluxCD or ArgoCD.
 
@@ -82,9 +84,9 @@ cat /etc/hosts
 
 Finally!
 
-By default, Pulumi uses the [cloud backend](https://www.pulumi.com/docs/iac/concepts/state-and-backends/#pulumi-cloud-backend), that's not what we want.
+By default, Pulumi uses the [cloud backend](https://www.pulumi.com/docs/iac/concepts/state-and-backends/#pulumi-cloud-backend), that's not what we want. This is where Pulumi is going to store the state.
 
-This is where Pulumi is going to store the state. Let's configure it to use the [local filesystem](https://www.pulumi.com/docs/iac/concepts/state-and-backends/#local-filesystem).
+Let's configure it to use the [local filesystem](https://www.pulumi.com/docs/iac/concepts/state-and-backends/#local-filesystem).
 
 ```bash
 cd pulumi-zitadel
@@ -150,11 +152,11 @@ Among the CRDs the operator installs, we have [`Stack`](https://github.com/pulum
 
 The operator will create a `Workspace` based on the `Stack` we defined and it will periodically check the state of the repository and trigger an update if needed.
 
-All the configuration is included in the `Stack` configuration. The only thing missing is access to create the secret for Grafana. We can provide the `ServiceAccount` used by the workspace access.
+All the configuration is included in the `Stack` configuration. The only thing missing is permissions to create the secret for Grafana. We provide it through the `ServiceAccount` used by the workspace.
 
 <iframe frameborder="0" scrolling="no" style="width:100%; height:560px;" allow="clipboard-write" src="https://emgithub.com/iframe.html?target=https%3A%2F%2Fgithub.com%2Fdriv%2Fzitadel-pulumi%2Fblob%2Fmain%2Fzitadel-pulumi%2Fstack.yaml%23L20-L42&style=a11y-light&type=code&showBorder=on&showLineNumbers=on&showFileMeta=on&showFullPath=on&showCopy=on&fetchFromJsDelivr=on"></iframe>
 
-We can apply the `Stack`:
+We can apply the `Stack`, `Roles` and `RoleBindings`:
 
 ```bash
 kubectl apply -f zitadel-pulumi/stack.yaml
@@ -176,7 +178,7 @@ zitadel-pulumi           False
 
 # Conclusion
 
-I was pleasantly surprised by Pulumi per se. I loved being able to work with a language I am familiar with and use the IDE to its full potential.
+I was pleasantly surprised by Pulumi per se. I loved being able to work with a language I am familiar with and use the IDE to its full potential. As the configuration grows, I think the benefits become more significant.
 
 At least for Zitadel, you can see that the Pulumi package is just a conversion from Terraform, meaning that it does not take full advantage of the language features. It relies on untyped strings for configuration which makes it error-prone.
 
@@ -184,6 +186,6 @@ The Zitadel API is also not helpful since it's returning generic errors or even 
 
 The operator is a great addition, but it's not fully mature yet. I've tried to use a self-contained image instead of getting the data from the repository, but it kept trying to install the dependencies that were already present.
 
-There is also no clear way to fully define the backend configuration, needing to define environment variables in the `Stack` definition.
+There is also no clear way to fully define the backend configuration, forcing us to define environment variables in the `Stack` definition.
 
-I wouldn’t use the operator in production yet; I’d use an external CI/CD tool for now. However, I hope this changes, as I'd love to avoid having to expose configuration credentials or APIs externally.
+I wouldn’t use the operator in production yet; I’d stick with an external CI/CD tool for now. However, I hope this changes, as I'd love to avoid having to expose configuration credentials or APIs externally.
