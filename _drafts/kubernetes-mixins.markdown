@@ -34,7 +34,7 @@ Mixins for observability are typically written in [Jsonnet](https://jsonnet.org/
 
 **Libsonnet** is just a `.libsonnet` file extension, indicating a Jsonnet library that can be imported and reused.
 
-**Jsonnet-bundler** (`jb`) is a package manager for Jsonnet, can fetch and manage mixin dependencies.
+**[jsonnet-bundler](https://github.com/jsonnet-bundler/jsonnet-bundler)** (`jb`) is a package manager for Jsonnet, can fetch and manage mixin dependencies.
 
 This approach allows you to keep your monitoring configuration as code, version it, and easily adopt community best practices into your environment.
 
