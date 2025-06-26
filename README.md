@@ -5,7 +5,7 @@ You can find this blog on [amazinglyabstract.it](http://amazinglyabstract.it), s
 ## Run locally
 
 ```bash
-bundle exec jekyll serve
+bundle exec jekyll serve --draft
 ```
 
 ## Install dependencies
