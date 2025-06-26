@@ -28,6 +28,59 @@ Do you have multiple clusters? Multiple scraping jobs? Are you using Prometheus,
 
 As you can see the possibilities are combinatorial. Mixins can adapt to our configuration.
 
+### Libsonnet, Jsonnet and Jsonnet-bundler
+
+Mixins for observability are typically written in [Jsonnet](https://jsonnet.org/), a data templating language that makes it easy to generate JSON or YAML.
+
+**Libsonnet** is just a `.libsonnet` file extension, indicating a Jsonnet library that can be imported and reused.
+
+**Jsonnet-bundler** (`jb`) is a package manager for Jsonnet, can fetch and manage mixin dependencies.
+
+This approach allows you to keep your monitoring configuration as code, version it, and easily adopt community best practices into your environment.
+
+That's useful in 2 ways, first by providing some kind of templating for json or YAML, and second by allowing to import libraries that can be reused across different mixins.
+
+We can see this in action with the grafana dashboards, the first line imports the grafonnet grafana library:
+
+```libsonnet
+local g = import 'github.com/grafana/grafonnet/gen/grafonnet-latest/main.libsonnet';
+
+local prometheus = g.query.prometheus;
+local stat = g.panel.stat;
+local timeSeries = g.panel.timeSeries;
+local var = g.dashboard.variable;
+
+{
+  local statPanel(title, unit, query) =
+    stat.new(title)
+    + stat.options.withColorMode('none')
+    + stat.standardOptions.withUnit(unit)
+    + stat.queryOptions.withInterval($._config.grafanaK8s.minimumTimeInterval)
+    + stat.queryOptions.withTargets([
+      prometheus.new('${datasource}', query)
+      + prometheus.withInstant(true),
+    ]),
+
+  local tsPanel =
+    timeSeries {
+      new(title):
+        timeSeries.new(title)
+        + timeSeries.options.legend.withShowLegend()
+        + timeSeries.options.legend.withAsTable()
+        + timeSeries.options.legend.withDisplayMode('table')
+        + timeSeries.options.legend.withPlacement('right')
+        + timeSeries.options.legend.withCalcs(['lastNotNull'])
+        + timeSeries.options.tooltip.withMode('single')
+        + timeSeries.fieldConfig.defaults.custom.withShowPoints('never')
+        + timeSeries.fieldConfig.defaults.custom.withFillOpacity(10)
+        + timeSeries.fieldConfig.defaults.custom.withSpanNulls(true)
+        + timeSeries.queryOptions.withInterval($._config.grafanaK8s.minimumTimeInterval),
+    },
+  ...
+```
+
+This would be too complex for configuration that does not get shared across multiple projects.
+
 ## Grafana Alloy
 
 Before being able to visualize and alert on the metrics, we need to collect them. Alloy is an all-in-one solution to collect, process, and ship metrics.
