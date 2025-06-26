@@ -3,7 +3,7 @@ layout: post
 title: "Kubernetes observability from day one - Mixins on Grafana, Mimir and Alloy"
 categories: Kubernetes Observability
 tags:   Kubernetes Grafana Mimir Alloy Mixins Observability
-date:	05/06/2025 00:00:00+0000
+date:	26/06/2025 00:00:00+0000
 ---
 
 One of the things we quickly find out when using Kubernetes is that it's hard to know what is going on in our cluster. In most cases, we implement monitoring and alerting after we've dealt with problems, but there is a better way.
