@@ -44,7 +44,7 @@ That's useful in 2 ways, first by providing templating for JSON or YAML, and sec
 
 We can see this in action with the Grafana dashboards, the first line imports the grafonnet Grafana library, which provides functions to define dashboards and panels:
 
-```libsonnet
+```text
 local g = import 'github.com/grafana/grafonnet/gen/grafonnet-latest/main.libsonnet';
 
 local prometheus = g.query.prometheus;
