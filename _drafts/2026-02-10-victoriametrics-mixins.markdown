@@ -153,6 +153,10 @@ The result is a clean `manifests.yaml` that you apply or commit.
 kubectl apply -f manifests.yaml
 ```
 
+## Test it out
+
+You can test this setup locally on [Kind](https://kind.sigs.k8s.io/), head over to [driv/blog-victoriametrics-mixin-example](https://github.com/driv/blog-victoriametrics-mixin-example) and follow the README.
+
 ## Conclusion
 
 Switching the backend from Mimir/Alloy to VictoriaMetrics was surprisingly painless thanks to the Mixins. The abstractions work!
