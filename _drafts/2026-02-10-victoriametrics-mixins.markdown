@@ -58,9 +58,9 @@ jb install
 
 ### The Configuration
 
-This is where the magic (or the headache) happens. We need to tell the mixin where to find our metrics.
+This is where the magic happens. We need to tell the mixin where to find our metrics since the VictoriaMetrics Helm chart uses different job names than Grafana Alloy.
 
-In `main.libsonnet`, we import the mixin and override the selectors. The VictoriaMetrics Helm chart uses specific job names like `kubernetes-cadvisor` or `kubernetes-nodes`.
+In `main.libsonnet`, we import the mixin and override the selectors. 
 
 ```jsonnet
 local kubernetes = import 'kubernetes-mixin/mixin.libsonnet';
@@ -84,7 +84,7 @@ The beauty of this is that we are just changing a few lines of configuration cod
 
 This is where we stopped in the [previous post](/kubernetes-observability/2025/06/26/kubernetes-mixins.html). We did not package the alerts and dashboards for Kubernetes. We just hacked a few scripts together to apply the JSON files to our cluster.
 
-Since we are already using Jsonnet, we can write a small wrapper `k8s.libsonnet` that imports our configuration and wraps the output in the correct Kubernetes resources:
+Since we are already using Jsonnet, we can write a small wrapper `k8s.libsonnet` to import our configuration and wrap the output in the correct Kubernetes resources:
 - `VMRule`: The Custom Resource used by the VictoriaMetrics Operator for alerts and recording rules.
 - `ConfigMap`: To mount dashboards into Grafana (using the sidecar pattern).
 
@@ -141,13 +141,13 @@ local sanitizeName(s) = std.strReplace(std.asciiLower(s), '_', '-');
 }
 ```
 
-Now, generating the final manifest is a single command:
+Now we can generat the final manifests is a single command:
 
 ```bash
 jsonnet -J vendor k8s.libsonnet > manifests.yaml
 ```
 
-The result is a clean `manifests.yaml` that you can directly apply to your cluster or commit to your GitOps repository.
+The result is a clean `manifests.yaml` that you apply or commit.
 
 ```bash
 kubectl apply -f manifests.yaml
@@ -155,8 +155,5 @@ kubectl apply -f manifests.yaml
 
 ## Conclusion
 
-Switching the backend from Mimir/Alloy to VictoriaMetrics was surprisingly painless regarding the Mixins. The abstraction holds up.
+Switching the backend from Mimir/Alloy to VictoriaMetrics was surprisingly painless thanks to the Mixins. The abstractions work!
 
-The only "friction" is mapping the job names. But once that is done, and with a little helper to package the resources, we have a fully automated observability pipeline.
-
-If you are just starting out, I'd argue this stack is the faster path to "Day One" observability.
