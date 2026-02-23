@@ -6,7 +6,7 @@ tags:   Kubernetes Grafana VictoriaMetrics vmagent Mixins Observability
 date:   2026-02-10 00:00:00+0000
 ---
 
-In a [previous post](/kubernetes-observability/2025/06/26/kubernetes-mixins.html), I explored how to set up observability using Kubernetes Mixins with Grafana Mimir and Alloy. It was a great exercise, but the stack was... heavy. Distributed systems are great fun (confused emoticon), most of the time we should just stick to a simpler setup.
+In a [previous post](/kubernetes-observability/2025/06/26/kubernetes-mixins.html), I explored how to set up observability using Kubernetes Mixins with Grafana Mimir and Alloy. It was a great exercise, but the stack was... heavy. Distributed systems are great fun 🤔, most of the time we should just stick to a simpler setup.
 
 Enter VictoriaMetrics.
 
