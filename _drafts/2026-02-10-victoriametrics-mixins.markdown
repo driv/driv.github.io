@@ -6,7 +6,7 @@ tags:   Kubernetes Grafana VictoriaMetrics vmagent Mixins Observability
 date:   2026-02-10 00:00:00+0000
 ---
 
-In a [previous post](/kubernetes-observability/2025/06/26/kubernetes-mixins.html), I explored how to set up observability using Kubernetes Mixins with Grafana Mimir and Alloy. It was a great exercise, but the stack was... heavy. Distributed systems are great fun 🤔, most of the time we should just stick to a simpler setup.
+In a [previous post](/kubernetes-observability/2025/06/26/kubernetes-mixins.html), I explored how to set up observability using Kubernetes Mixins with Grafana Mimir and Alloy. It was a great exercise, but the stack was... heavy. Distributed systems are great fun 🤨, but most of the time we should just stick to a simpler setup.
 
 Enter VictoriaMetrics.
 
@@ -17,14 +17,14 @@ I've been wanting to try VictoriaMetrics for a while. It should be performant, r
 
 Instead of Alloy and Mimir, we are going to use:
 
-- **vmagent**: A tiny but mighty agent that scrapes metrics and forwards them. It replaces Prometheus server (for scraping) and handles relabeling with impressive efficiency.
-- **VictoriaMetrics**: The long-term storage. You can run it as a single binary or a cluster. For most of us, the single node version is already overkill in terms of performance.
+- **vmagent**: A tiny but mighty agent that scrapes metrics and forwards them. It replaces the Prometheus server (for scraping) and handles relabeling with impressive efficiency.
+- **VictoriaMetrics**: The long-term storage. You can run it as a single binary or a cluster. For most of us, the single-node version is already overkill in terms of performance.
 
 ## Kubernetes Mixins... again?
 
 Yes, the goal is the same. We want to use the community's knowledge to monitor our cluster. The [kubernetes-mixin](https://github.com/kubernetes-monitoring/kubernetes-mixin) is still the source of truth.
 
-However, the default mixin configuration assumes a standard Prometheus setups. When using the VictoriaMetrics stack (specifically the [victoria-metrics-k8s-stack](https://github.com/VictoriaMetrics/helm-charts/tree/master/charts/victoria-metrics-k8s-stack) Helm chart), the job names and labels might differ slightly.
+However, the default mixin configuration assumes a standard Prometheus setup. When using the VictoriaMetrics stack (specifically the [victoria-metrics-k8s-stack](https://github.com/VictoriaMetrics/helm-charts/tree/master/charts/victoria-metrics-k8s-stack) Helm chart), the job names and labels might differ slightly.
 
 But hey! That's exactly what mixins are for!
 
@@ -58,7 +58,7 @@ jb install
 
 ### The Configuration
 
-This is where the magic happens. We need to tell the mixin where to find our metrics since the VictoriaMetrics Helm chart uses different job names than Grafana Alloy.
+This is where the magic happens. We need to provide the mixin with the right labels to find our metrics since the VictoriaMetrics Helm chart uses its own job names.
 
 In `main.libsonnet`, we import the mixin and override the selectors. 
 
@@ -91,7 +91,7 @@ Since we are already using Jsonnet, we can write a small wrapper `k8s.libsonnet`
 ```jsonnet
 local mixin = import 'main.libsonnet';
 
-// Helper to sanitize names for K8s resources
+// Helper to sanitise names for K8S resources
 local sanitizeName(s) = std.strReplace(std.asciiLower(s), '_', '-');
 
 {
@@ -141,7 +141,7 @@ local sanitizeName(s) = std.strReplace(std.asciiLower(s), '_', '-');
 }
 ```
 
-Now we can generat the final manifests is a single command:
+Now we can generate the final manifests in a single command:
 
 ```bash
 jsonnet -J vendor k8s.libsonnet > manifests.yaml
@@ -160,4 +160,3 @@ You can test this setup locally on [Kind](https://kind.sigs.k8s.io/), head over 
 ## Conclusion
 
 Switching the backend from Mimir/Alloy to VictoriaMetrics was surprisingly painless thanks to the Mixins. The abstractions work!
-
